@@ -3,8 +3,59 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale.Domain", "PointOfSale.Domain\PointOfSale.Domain.csproj", "{850FA2A5-D46F-417F-AA62-EE1DFA42FA5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale.Infrastructure.IoC", "PointOfSale.Infrastructure.IoC\PointOfSale.Infrastructure.IoC.csproj", "{12364EB6-F8DA-4C88-834E-F574EAC80E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale.Infrastructure.Repository", "PointOfSale.Infrastructure.Repository\PointOfSale.Infrastructure.Repository.csproj", "{5C70F801-0A23-480B-9A58-B0A49D2AE8DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale.Application", "PointOfSale.Application\PointOfSale.Application.csproj", "{D4A8F210-2051-48CA-BE09-7554AF60AC8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSale.Mvc", "PointOfSale.Mvc\PointOfSale.Mvc.csproj", "{FBF10DB5-D6F6-4087-A6EF-EABFA4D0C330}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{0AC44FF2-00C9-46FE-BF91-F199E0B56C6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{AE749022-FDAF-4BF0-A57B-A4602F97D685}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F8DD3E5D-2112-46DC-99FB-64170CC35056}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3B76E10D-ED74-4AB7-A9E8-09B5AAE63AD5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{850FA2A5-D46F-417F-AA62-EE1DFA42FA5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850FA2A5-D46F-417F-AA62-EE1DFA42FA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850FA2A5-D46F-417F-AA62-EE1DFA42FA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850FA2A5-D46F-417F-AA62-EE1DFA42FA5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12364EB6-F8DA-4C88-834E-F574EAC80E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12364EB6-F8DA-4C88-834E-F574EAC80E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12364EB6-F8DA-4C88-834E-F574EAC80E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12364EB6-F8DA-4C88-834E-F574EAC80E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C70F801-0A23-480B-9A58-B0A49D2AE8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C70F801-0A23-480B-9A58-B0A49D2AE8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C70F801-0A23-480B-9A58-B0A49D2AE8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C70F801-0A23-480B-9A58-B0A49D2AE8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A8F210-2051-48CA-BE09-7554AF60AC8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A8F210-2051-48CA-BE09-7554AF60AC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A8F210-2051-48CA-BE09-7554AF60AC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A8F210-2051-48CA-BE09-7554AF60AC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF10DB5-D6F6-4087-A6EF-EABFA4D0C330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF10DB5-D6F6-4087-A6EF-EABFA4D0C330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF10DB5-D6F6-4087-A6EF-EABFA4D0C330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF10DB5-D6F6-4087-A6EF-EABFA4D0C330}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{850FA2A5-D46F-417F-AA62-EE1DFA42FA5B} = {F8DD3E5D-2112-46DC-99FB-64170CC35056}
+		{12364EB6-F8DA-4C88-834E-F574EAC80E94} = {AE749022-FDAF-4BF0-A57B-A4602F97D685}
+		{5C70F801-0A23-480B-9A58-B0A49D2AE8DF} = {AE749022-FDAF-4BF0-A57B-A4602F97D685}
+		{D4A8F210-2051-48CA-BE09-7554AF60AC8C} = {0AC44FF2-00C9-46FE-BF91-F199E0B56C6E}
+		{FBF10DB5-D6F6-4087-A6EF-EABFA4D0C330} = {3B76E10D-ED74-4AB7-A9E8-09B5AAE63AD5}
 	EndGlobalSection
 EndGlobal
