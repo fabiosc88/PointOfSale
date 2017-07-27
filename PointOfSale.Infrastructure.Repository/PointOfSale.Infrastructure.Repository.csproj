@@ -51,8 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\CategoryMap.cs" />
     <Compile Include="EF\ContextManager.cs" />
+    <Compile Include="EF\OrderMap.cs" />
+    <Compile Include="EF\OrderProductMap.cs" />
+    <Compile Include="EF\PaymentMethodMap.cs" />
     <Compile Include="EF\PointOfSaleContext.cs" />
+    <Compile Include="EF\ProductMap.cs" />
     <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Interfaces\IUnifOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +67,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PointOfSale.Domain\PointOfSale.Domain.csproj">
+      <Project>{850fa2a5-d46f-417f-aa62-ee1dfa42fa5b}</Project>
+      <Name>PointOfSale.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
