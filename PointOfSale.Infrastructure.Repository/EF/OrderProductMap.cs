@@ -1,10 +1,5 @@
-﻿using PointOfSale.Domain;
-using System;
-using System.Collections.Generic;
+﻿using PointOfSale.Domain.Entities;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PointOfSale.Infrastructure.Repository.EF
 {
@@ -13,6 +8,15 @@ namespace PointOfSale.Infrastructure.Repository.EF
         public OrderProductMap()
         {
             ToTable("OrderProduct");
+
+            Property(x => x.Price)
+                .HasColumnName("Price")
+                .IsRequired()
+                .HasColumnType("Money");
+
+            Property(x => x.Amount)
+                .HasColumnName("Amount")
+                .IsRequired();
 
             HasKey(x => new { x.OrderId, x.ProductId });
 
