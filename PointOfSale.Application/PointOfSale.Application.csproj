@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationBase.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\CategoryProfile.cs" />
+    <Compile Include="AutoMapper\OrderProductProfile.cs" />
+    <Compile Include="AutoMapper\OrderProfile.cs" />
+    <Compile Include="AutoMapper\PaymentMethodProfile.cs" />
+    <Compile Include="AutoMapper\ProductProfile.cs" />
+    <Compile Include="CategoryApplication.cs" />
+    <Compile Include="OrderApplication.cs" />
+    <Compile Include="OrderProductApplication.cs" />
+    <Compile Include="PaymentMethodApplication.cs" />
+    <Compile Include="ProductApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\OrderProductViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\PaymentMethodViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PointOfSale.Domain\PointOfSale.Domain.csproj">
+      <Project>{850fa2a5-d46f-417f-aa62-ee1dfa42fa5b}</Project>
+      <Name>PointOfSale.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PointOfSale.Infrastructure.Repository\PointOfSale.Infrastructure.Repository.csproj">
+      <Project>{5c70f801-0a23-480b-9a58-b0a49d2ae8df}</Project>
+      <Name>PointOfSale.Infrastructure.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

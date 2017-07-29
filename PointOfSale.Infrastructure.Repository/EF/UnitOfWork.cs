@@ -1,5 +1,5 @@
-﻿using PointOfSale.Infrastructure.Repository.Interfaces;
-using Microsoft.Practices.ServiceLocation;
+﻿using Microsoft.Practices.ServiceLocation;
+using PointOfSale.Infrastructure.Repository.Interfaces;
 using System.Data.Entity;
 
 namespace PointOfSale.Infrastructure.Repository.EF

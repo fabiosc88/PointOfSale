@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using PointOfSale.Infrastructure.IoC;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -12,6 +9,8 @@ namespace PointOfSale.Mvc
     {
         protected void Application_Start()
         {
+            DependencyResolver.SetResolver(SimpleInjectorConfig.RegisterServices());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
