@@ -9,6 +9,10 @@ namespace PointOfSale.Application.AutoMapper
             Mapper.Initialize(config =>
             {
                 config.AddProfile<CategoryProfile>();
+                config.AddProfile<PaymentMethodProfile>();
+                config.AddProfile<OrderProfile>();
+                config.AddProfile<OrderProductProfile>();
+                config.AddProfile<ProductProfile>();
             });
         }
     }

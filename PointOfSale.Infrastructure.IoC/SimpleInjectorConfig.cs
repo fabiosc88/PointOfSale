@@ -19,6 +19,9 @@ namespace PointOfSale.Infrastructure.IoC
 
             container.Register<IProductRepository, ProductRepository>();
             container.Register<ICategoryRepository, CategoryRepository>();
+            container.Register<IPaymentMethodRepository, PaymentMethodRepository>();
+            container.Register<IOrderProductRepository, OrderProductRepository>();
+            container.Register<IOrderRepository, OrderRepository>();
             container.Register<PointOfSaleContext>(Lifestyle.Scoped);
 
             return container;

@@ -1,1 +1,48 @@
-﻿
+﻿@model PointOfSale.Application.ViewModels.PaymentMethodViewModel
+@{
+    ViewBag.Title = "Payment Methods";
+    ViewBag.Description = "Create";
+}
+
+<div ng-controller="PaymentMethodsController">
+    @using (Html.BeginForm("Create", "PaymentMethods", FormMethod.Post, new { @role = "form", @name = "paymentMethodForm", @novalidate = "novalidate" }))
+    {
+        <div class="field">
+            @Html.LabelFor(m => m.Name, new { @class = "label" })
+            <div class="control">
+                @Html.EditorFor(m => m.Name, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "input",
+                   @ng_model = "paymentMethod.Name",
+                   @ng_required = "true",
+                   @ng_class = "{ 'is-danger': (paymentMethodForm.Name.$touched && paymentMethodForm.Name.$error.required), 'is-success': (paymentMethodForm.Name.$touched && !paymentMethodForm.Name.$error.required)}"
+               }
+           })
+                <p ng-show="paymentMethodForm.Name.$touched && paymentMethodForm.Name.$error.required" class="help is-danger">Name field is required!</p>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button ng-disabled="paymentMethodForm.$invalid || paymentMethodForm.$pristine" class="button is-primary">Submit</button>
+            </div>
+            <div class="control">
+                <a class="button is-link" href="@Url.Action("Index")">Cancel</a>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section scripts
+{
+    <script>
+        var app = angular.module('pointOfSale');
+        app.controller('PaymentMethodsController', ['$scope', function ($scope) {
+
+        }]);
+
+    </script>
+}
