@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PointOfSale.Application;
+using PointOfSale.Application.Apps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +10,16 @@ namespace PointOfSale.Mvc.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CategoryApplication _product;
+
+        public HomeController(CategoryApplication product)
+        {
+            _product = product;
+        }
+
         public ActionResult Index()
         {
+            var a = _product.List();
             return View();
         }
 

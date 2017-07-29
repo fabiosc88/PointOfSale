@@ -1,27 +1,33 @@
 ﻿using Microsoft.Practices.ServiceLocation;
 using PointOfSale.Infrastructure.Repository.EF;
 using PointOfSale.Infrastructure.Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace PointOfSale.Infrastructure.Repository.Repositories
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<C,T> : 
+        IBaseRepository<T> where T : class where C : DbContext, new()
     {
-        protected PointOfSaleContext Context { get; private set; }
 
-        public BaseRepository()
+        private C _context = new C();
+        public C Context
         {
-            var contextManager = ServiceLocator.Current.GetInstance<ContextManager>();
-            Context = (PointOfSaleContext)contextManager.Context;
-        }
-        public virtual TEntity Add(TEntity obj)
-        {
-            return Context.Set<TEntity>().Add(obj);
+            get { return _context; }
+            set { _context = value; }
         }
 
-        public bool Remove(int id)
+        public virtual T Add(T obj)
+        {
+            var entity = _context.Set<T>().Add(obj);
+            _context.SaveChanges();
+
+            return entity;
+        }
+
+        public bool Remove(Guid id)
         {
             var obj = GetById(id);
             if (obj != null)
@@ -35,34 +41,37 @@ namespace PointOfSale.Infrastructure.Repository.Repositories
             }
         }
 
-        public void Remove(TEntity obj)
+        public void Remove(T obj)
         {
-            Context.Set<TEntity>().Remove(obj);
+            _context.Set<T>().Remove(obj);
+            _context.SaveChanges();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return Context.Set<TEntity>().ToList();
+            return _context.Set<T>().ToList();
         }
 
-        public TEntity GetById(int id)
+        public T GetById(Guid id)
         {
-            return Context.Set<TEntity>().Find(id);
+            return _context.Set<T>().Find(id);
         }
 
-        public TEntity Update(TEntity obj, int id)
+        public T Update(T obj, Guid id)
         {
             if (obj == null)
             {
                 return null;
             }
 
-            TEntity existing = Context.Set<TEntity>().Find(id);
+            T existing = _context.Set<T>().Find(id);
             if (existing != null)
             {
-                Context.Entry(existing).CurrentValues.SetValues(obj);
-                Context.Entry(existing).State = EntityState.Modified;
+                _context.Entry(existing).CurrentValues.SetValues(obj);
+                _context.Entry(existing).State = EntityState.Modified;
             }
+
+            _context.SaveChanges();
 
             return existing;
         }

@@ -2,6 +2,8 @@
 using PointOfSale.Infrastructure.Repository.Interfaces;
 using PointOfSale.Infrastructure.Repository.Repositories;
 using SimpleInjector;
+using SimpleInjector.Integration.Web;
+using SimpleInjector.Lifestyles;
 
 namespace PointOfSale.Infrastructure.IoC
 {
@@ -11,9 +13,12 @@ namespace PointOfSale.Infrastructure.IoC
         {
             var container = new Container();
 
-            container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
-            container.Register(typeof(IBaseRepository<>),
-                                    new[] { typeof(BaseRepository<>).Assembly }, Lifestyle.Scoped);
+            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+           /* container.Register(typeof(IBaseRepository<>),
+                                    new[] { typeof(BaseRepository<>).Assembly }, Lifestyle.Scoped);*/
+
+            container.Register<IProductRepository, ProductRepository>();
+            container.Register<ICategoryRepository, CategoryRepository>();
             container.Register<PointOfSaleContext>(Lifestyle.Scoped);
 
             return container;

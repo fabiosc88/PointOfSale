@@ -58,14 +58,12 @@
     <Compile Include="EF\PaymentMethodMap.cs" />
     <Compile Include="EF\PointOfSaleContext.cs" />
     <Compile Include="EF\ProductMap.cs" />
-    <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\ICategoryRepository.cs" />
     <Compile Include="Interfaces\IOrderProductRepository.cs" />
     <Compile Include="Interfaces\IOrderRepository.cs" />
     <Compile Include="Interfaces\IPaymentMethodRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
-    <Compile Include="Interfaces\IUnifOfWork.cs" />
     <Compile Include="Migrations\201707280012108_InitialMigration.cs" />
     <Compile Include="Migrations\201707280012108_InitialMigration.Designer.cs">
       <DependentUpon>201707280012108_InitialMigration.cs</DependentUpon>

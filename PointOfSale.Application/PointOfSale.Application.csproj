@@ -37,6 +37,7 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,18 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationBase.cs" />
+    <Compile Include="Apps\ApplicationBase.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\CategoryProfile.cs" />
     <Compile Include="AutoMapper\OrderProductProfile.cs" />
     <Compile Include="AutoMapper\OrderProfile.cs" />
     <Compile Include="AutoMapper\PaymentMethodProfile.cs" />
     <Compile Include="AutoMapper\ProductProfile.cs" />
-    <Compile Include="CategoryApplication.cs" />
-    <Compile Include="OrderApplication.cs" />
-    <Compile Include="OrderProductApplication.cs" />
-    <Compile Include="PaymentMethodApplication.cs" />
-    <Compile Include="ProductApplication.cs" />
+    <Compile Include="Apps\CategoryApplication.cs" />
+    <Compile Include="Apps\OrderApplication.cs" />
+    <Compile Include="Apps\OrderProductApplication.cs" />
+    <Compile Include="Apps\PaymentMethodApplication.cs" />
+    <Compile Include="Apps\ProductApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\OrderProductViewModel.cs" />

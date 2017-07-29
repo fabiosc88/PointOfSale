@@ -1,42 +1,102 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/toastr")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body ng-app="pointOfSale">
+    <nav class="navbar ">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/img/logo.png" alt="Bulma: a modern CSS framework based on Flexbox">
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item " href="@Url.Action("Index", "Home")">
+                    Home
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link  is-active" href="/documentation/overview/start/">
+                        Manage
+                    </a>
+                    <div class="navbar-dropdown ">
+                        <a class="navbar-item " href="/documentation/overview/start/">
+                            Products
+                        </a>
+                        <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+                            Payment Methods
+                        </a>
+                        <a class="navbar-item " href="@Url.Action("Index", "Categories")">
+                            Categories
+                        </a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item">
+                            <div>
+                                <p class="has-text-info is-size-6-desktop"><strong>Orders</strong></p>
+
+                                <small>
+                                    <a class="view-all-versions" href="/versions">Last Ordered</a>
+                                </small>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link " href="http://bulma.io/blog/">
+                        Shop
+                    </a>
+                    <div class="navbar-dropdown " data-style="width: 18rem;">
+
+                        <a class="navbar-item" href="/2017/07/24/access-previous-bulma-versions/">
+                            Products
+                        </a>
+
+                        <a class="navbar-item" href="/2017/03/10/new-field-element/">
+                            Categories
+                        </a>                       
+                    </div>
+                </div>       
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+
+            <div class="navbar-end">
+                <a class="navbar-item" href="https://github.com/jgthms/bulma" target="_blank">
+                    <span class="icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </span>
+                    <span>Shopping Cart</span>
+                </a>              
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </nav>
 
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <p class="title">
+                @ViewBag.Title
+            </p>
+            <p class="subtitle">
+                @ViewBag.Description
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/toastr")
     @RenderSection("scripts", required: false)
+    @Html.Partial("_Toastr")
 </body>
 </html>

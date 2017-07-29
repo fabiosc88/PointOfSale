@@ -1,0 +1,40 @@
+﻿@model PointOfSale.Application.ViewModels.CategoryViewModel
+@{
+    ViewBag.Title = "Categories";
+    ViewBag.Description = "Create";
+}
+
+<div ng-controller="CategoriesController">
+    @using (Html.BeginForm("Create", "Categories", FormMethod.Post, new { @role = "form", @name = "categoryForm", @novalidate = "novalidate" }))
+    {
+        <div class="field">
+            @Html.LabelFor(m => m.Name, new { @class = "label" })
+            <div class="control">
+                @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "input", @ng_model = "category.Name", @ng_required = "true",
+                   @ng_class= "{ 'is-danger': (categoryForm.Name.$touched && categoryForm.Name.$error.required), 'is-success': (categoryForm.Name.$touched && !categoryForm.Name.$error.required)}" } })
+                <p ng-show="categoryForm.Name.$touched && categoryForm.Name.$error.required" class="help is-danger">Name field is required!</p>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button ng-disabled="categoryForm.$invalid || categoryForm.$pristine" class="button is-primary">Submit</button>
+            </div>
+            <div class="control">
+                <a class="button is-link" href="@Url.Action("Index")">Cancel</a>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section scripts
+{
+    <script>
+        var app = angular.module('pointOfSale');
+        app.controller('CategoriesController', ['$scope', function ($scope) {
+            
+        }]);
+
+    </script>    
+}

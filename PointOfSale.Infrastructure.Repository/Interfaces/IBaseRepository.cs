@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PointOfSale.Infrastructure.Repository.Interfaces
 {
-    public interface IBaseRepository<TEntity> where TEntity : class
+    public interface IBaseRepository<T> where T : class
     {
-        TEntity Add(TEntity obj);
-        void Remove(TEntity obj);
-        bool Remove(int id);
-        TEntity Update(TEntity obj, int id);
-        TEntity GetById(int id);
-        IEnumerable<TEntity> GetAll();
+        T Add(T obj);
+        void Remove(T obj);
+        bool Remove(Guid id);
+        T Update(T obj, Guid id);
+        T GetById(Guid id);
+        IEnumerable<T> GetAll();
     }
 }

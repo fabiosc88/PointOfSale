@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PointOfSale.Application.ViewModels.PaymentMethodViewModel>
+@{
+    ViewBag.Title = "Payment Methods";
+    ViewBag.Description = "Index";
+}
+
+
+<a class="button is-primary is-pulled-right" href="@Url.Action("Create", "PaymentMethod")">Create New</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    @using (Html.BeginForm("Delete", "PaymentMethod", new { id = item.Id }, FormMethod.Post))
+                    {
+                        <a class="button is-info" href="@Url.Action("Edit", "PaymentMethod", new { id = item.Id })">Edit</a>
+                        <button class="button is-danger">Remove</button>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts
+{
+    <script>
+
+    </script>
+}
