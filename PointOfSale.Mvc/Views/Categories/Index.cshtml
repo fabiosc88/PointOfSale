@@ -6,32 +6,40 @@
 
 
 <a class="button is-primary is-pulled-right" href="@Url.Action("Create", "Categories")">Create New</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>       
-                    @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }, FormMethod.Post))
-                    {
-                        <a class="button is-info" href="@Url.Action("Edit", "Categories", new { id = item.Id })">Edit</a>
-                        <button class="button is-danger">Remove</button>
-                    }
-                        
-                </td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Categories", new { id = item.Id }, FormMethod.Post))
+                    {
+                            <a class="button is-info" href="@Url.Action("Edit", "Categories", new { id = item.Id })">Edit</a>
+                            <button class="button is-danger">Remove</button>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2 class="has-text-centered">No items do display</h2>
+}
+
 
 
 

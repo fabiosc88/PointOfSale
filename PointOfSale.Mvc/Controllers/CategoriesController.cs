@@ -97,7 +97,18 @@ namespace PointOfSale.Mvc.Controllers
         [HttpPost]
         public ActionResult Delete(Guid id)
         {
-            var result = _categoryApplication.Delete(id);
+            var result = false;
+
+            try
+            {
+                result = _categoryApplication.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                this.AddToastMessage("", "Category cannot be deleted. There is one or more products associated with it.", ToastType.Error);
+                return RedirectToAction("Index");
+            }
+            
 
             if (result)
             {
