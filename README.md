@@ -8,7 +8,7 @@ The project was developed in Visual Studio 2017 Community Edition
 - AngularJS
 - SQL Server Express
 
-## Estrutura do Projeto
+## Project Structure
 ```bash
 
 PointOfSale/
@@ -40,13 +40,6 @@ PointOfSale/
 ## Database
 > All database structure and mappings can be found in "PointOfSale.Infrastructure.Repository" project.
 
-SQL Server Express was used as the application default database. Connection settings are placed in **Web.Config** file of "PointOfSale.Mvc" project. It can be adjusted to your database if needed:
-```xml
-...
-<connectionStrings>
-    <add name="PointOfSaleConnection" connectionString="Data Source=localhost\SQLEXPRESS; Initial Catalog=point_of_sale; Integrated Security=True; MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
-  </connectionStrings>
-...  
-```
+mssqllocaldb was used as the application default database. The context name used was PointOfSaleContext
 
-After that you have to use the **Package Manager Console** and run the command `Update-Database` with default project set to "PointOfSale.Infrastructure.Repository" in order to apply the migrations and create the database.
+You have to use the **Package Manager Console** and run the command `Update-Database` with default project set to "PointOfSale.Infrastructure.Repository" in order to apply the migrations and create the database.
