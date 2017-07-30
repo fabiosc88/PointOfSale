@@ -20,13 +20,17 @@ namespace PointOfSale.Infrastructure.Repository.EF
                 .HasMaxLength(30)
                 .IsRequired();
 
+            Property(x => x.CategoryId)
+                .HasColumnName("Category_Id");
+
             Property(x => x.Price)
                 .HasColumnName("Price")
                 .IsRequired()
                 .HasColumnType("Money");
 
             HasRequired(x => x.Category)
-                .WithMany(x => x.Products);
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.CategoryId);
 
             HasKey(x => x.Id);
         }

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PointOfSale.Application.ViewModels.ProductViewModel>
+@{
+    ViewBag.Title = "Shop";
+    ViewBag.Description = "Listing all Products";
+    var count = 0;
+}
+
+<div ng-controller="ShopController">
+    <div class="columns">
+        @foreach (var item in Model)
+        {
+
+            if (count == 5)
+            {
+            @:</div>
+            @:<div class="columns">
+            count = 0;
+            }
+
+            @:<div class="column">
+                <div class="card">
+                    <div class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">@item.Name</p>
+                                <p class="subtitle is-6">Category: @item.Category.Name</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <h2>@item.Price.ToString("C")</h2>
+                            <br />
+                            <button class="button" ng-click='addToCart("@item.Id", "@item.Name")'>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            @:</div>
+
+
+
+
+            count++;
+
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var app = angular.module('pointOfSale');
+        app.controller('ShopController', ['$scope', 'cartService', function ($scope, cartService) {
+            $scope.addToCart = (id, name) => {
+                cartService.addItemToCart(id);
+                $scope.$parent.itemsCount = cartService.getItemsCount();
+                toastr.success(`Successfuly added ${name} to your shopping cart!`);
+            }          
+        }]);
+    </script>
+}
+

@@ -53,15 +53,11 @@
   <ItemGroup>
     <Compile Include="EF\CategoryMap.cs" />
     <Compile Include="EF\ContextManager.cs" />
-    <Compile Include="EF\OrderMap.cs" />
-    <Compile Include="EF\OrderProductMap.cs" />
     <Compile Include="EF\PaymentMethodMap.cs" />
     <Compile Include="EF\PointOfSaleContext.cs" />
     <Compile Include="EF\ProductMap.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\ICategoryRepository.cs" />
-    <Compile Include="Interfaces\IOrderProductRepository.cs" />
-    <Compile Include="Interfaces\IOrderRepository.cs" />
     <Compile Include="Interfaces\IPaymentMethodRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Migrations\201707280012108_InitialMigration.cs" />
@@ -72,12 +68,18 @@
     <Compile Include="Migrations\201707280014362_AddsPriceToOrderProduct.Designer.cs">
       <DependentUpon>201707280014362_AddsPriceToOrderProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707292045152_FixProduct.cs" />
+    <Compile Include="Migrations\201707292045152_FixProduct.Designer.cs">
+      <DependentUpon>201707292045152_FixProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707302240042_RemoveOrders.cs" />
+    <Compile Include="Migrations\201707302240042_RemoveOrders.Designer.cs">
+      <DependentUpon>201707302240042_RemoveOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
-    <Compile Include="Repositories\OrderProductRepository.cs" />
-    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\PaymentMethodRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
@@ -99,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707280014362_AddsPriceToOrderProduct.resx">
       <DependentUpon>201707280014362_AddsPriceToOrderProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707292045152_FixProduct.resx">
+      <DependentUpon>201707292045152_FixProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707302240042_RemoveOrders.resx">
+      <DependentUpon>201707302240042_RemoveOrders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

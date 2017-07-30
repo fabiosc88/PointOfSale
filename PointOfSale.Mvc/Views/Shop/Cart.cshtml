@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Shopping cart";
+    ViewBag.Description = "Review items before buying";
+}
+
+<div ng-controller="CartController">
+    <div ng-show="items.length > 0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th><span class="is-pulled-right">Total Price</span></th>
+                    <th>{{getTotal() | currency:"$"}}</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Amount}}</td>
+                    <td>{{item.Price | currency:"$"}}</td>
+                    <td><button class="button is-danger" ng-click="removeItem(item)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="button is-success is-pulled-right" style="margin-left: 5px" ng-click="placeOrder()">Place Order</button>
+        <div class="select is-pulled-right">
+            @Html.DropDownList("PaymentMethods", ViewBag.PaymentMethods as SelectList, "--Payment Method--", new { ng_model = "paymentMethod" })
+        </div>    
+    </div>
+    <div ng-show="items.length == 0"><h2 class="has-text-centered">Your Shopping Cart is Empty</h2></div>
+</div>
+
+@section scripts
+{
+    <script>
+        var app = angular.module('pointOfSale');
+        app.controller('CartController', ['$scope', '$http', 'cartService', function ($scope, $http, cartService) {
+            $scope.items = []
+            $http.get(`http://${window.location.host}/Shop/LoadCartData`, {
+                params: {
+                    items: cartService.getAllItems()
+                }
+            }).then((items) => {
+                if (items.data) {
+                    $scope.items = items.data;
+
+                    angular.forEach($scope.items, (i) => {
+                        i.Amount = cartService.getItem(i.Id);
+                       
+                    });
+                }
+            });
+
+            $scope.getTotal = () => {
+                var total = 0;
+                angular.forEach($scope.items, (i) => {
+                    total += i.Amount * i.Price
+                })
+
+                return total;
+            }
+
+            $scope.removeItem = (i) => {
+                $scope.items.splice($scope.items.indexOf(i), 1);
+                cartService.removeItem(i.Id);
+                $scope.$parent.itemsCount = cartService.getItemsCount();
+                toastr.success("Item removed with success.")
+            }
+
+            $scope.placeOrder = () => {
+                if (confirm(`Are you sure?\n Order Total: $ ${$scope.getTotal()}\nPayment Method: ${$scope.paymentMethod}`)) {
+                    cartService.clearCart();
+                    $scope.$parent.itemsCount = 0;
+                    $scope.items = [];
+                    alert('You order was placed.\nThank you!');
+                }
+            }
+        }]);
+    </script>
+}
+

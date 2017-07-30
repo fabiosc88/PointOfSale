@@ -8,6 +8,5 @@ namespace PointOfSale.Application.ViewModels
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<Order> Orders { get; set; }
     }
 }

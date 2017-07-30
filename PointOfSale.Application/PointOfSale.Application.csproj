@@ -50,19 +50,13 @@
     <Compile Include="Apps\ApplicationBase.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\CategoryProfile.cs" />
-    <Compile Include="AutoMapper\OrderProductProfile.cs" />
-    <Compile Include="AutoMapper\OrderProfile.cs" />
     <Compile Include="AutoMapper\PaymentMethodProfile.cs" />
     <Compile Include="AutoMapper\ProductProfile.cs" />
     <Compile Include="Apps\CategoryApplication.cs" />
-    <Compile Include="Apps\OrderApplication.cs" />
-    <Compile Include="Apps\OrderProductApplication.cs" />
     <Compile Include="Apps\PaymentMethodApplication.cs" />
     <Compile Include="Apps\ProductApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\OrderProductViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PaymentMethodViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>

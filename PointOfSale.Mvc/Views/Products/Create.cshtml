@@ -1,0 +1,80 @@
+﻿@model PointOfSale.Application.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Products";
+    ViewBag.Description = "Create";
+}
+
+<div ng-controller="ProductsController">
+    @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @role = "form", @name = "productForm", @novalidate = "novalidate" }))
+    {
+        <div class="field">
+            @Html.LabelFor(m => m.Name, new { @class = "label" })
+            <div class="control">
+                @Html.EditorFor(m => m.Name, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @class = "input",
+                           @ng_model = "product.Name",
+                           @ng_required = "true",
+                           @ng_class = "{ 'is-danger': (productForm.Name.$touched && productForm.Name.$error.required), 'is-success': (productForm.Name.$touched && !productForm.Name.$error.required)}"
+                       }
+                   })
+                <p ng-show="productForm.Name.$touched && productForm.Name.$error.required" class="help is-danger">Name field is required!</p>
+            </div>
+        </div>
+
+        <div class="field">
+            @Html.LabelFor(m => m.CategoryId, new { @class = "label" })
+            <div class="control">
+                <div class="select" ng-class="{ 'is-danger': (productForm.CategoryId.$touched && productForm.CategoryId.$error.required), 'is-success': (productForm.CategoryId.$touched && !productForm.CategoryId.$error.required)}">
+                    @Html.DropDownListFor(m => m.CategoryId, ViewBag.Categories as SelectList, "--Select Category--", new
+               {
+                   @ng_model = "Category",
+                   @ng_required = "true",
+                   
+               })
+                </div>
+                <p ng-show="productForm.CategoryId.$touched && productForm.CategoryId.$error.required" class="help is-danger">Category field is required!</p>
+            </div>
+        </div>
+
+        <div class="field">
+            @Html.LabelFor(m => m.Price, new { @class = "label" })
+            <div class="control">
+                @Html.EditorFor(m => m.Price, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "input",
+                       @ng_model = "product.Price",
+                       @ng_required = "true",
+                       @type = "number",
+                       @ng_class = "{ 'is-danger': (productForm.Price.$touched && productForm.Price.$error.required), 'is-success': (productForm.Price.$touched && !productForm.Price.$error.required)}"
+                   }
+               })
+                    <p ng-show="productForm.Price.$touched && productForm.Price.$error.required" class="help is-danger">Price field is required!</p>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button ng-disabled="productForm.$invalid || productForm.$pristine" class="button is-primary">Submit</button>
+            </div>
+            <div class="control">
+                <a class="button is-link" href="@Url.Action("Index")">Cancel</a>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section scripts
+{
+    <script>
+        var app = angular.module('pointOfSale');
+        app.controller('ProductsController', ['$scope', function ($scope) {
+        }]);
+
+    </script>
+}

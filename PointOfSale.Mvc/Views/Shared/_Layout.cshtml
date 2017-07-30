@@ -8,7 +8,7 @@
     @Styles.Render("~/Content/toastr")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body ng-app="pointOfSale">
+<body ng-app="pointOfSale" ng-controller="MainController">
     <nav class="navbar ">
         <div class="navbar-brand">
             <a class="navbar-item" href="@Url.Action("Index", "Home")">
@@ -22,11 +22,11 @@
                     Home
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link  is-active" href="/documentation/overview/start/">
+                    <a class="navbar-link  is-active" href="#">
                         Manage
                     </a>
                     <div class="navbar-dropdown ">
-                        <a class="navbar-item " href="/documentation/overview/start/">
+                        <a class="navbar-item " href="@Url.Action("Index", "Products")">
                             Products
                         </a>
                         <a class="navbar-item " href="@Url.Action("Index", "PaymentMethods")">
@@ -35,38 +35,23 @@
                         <a class="navbar-item " href="@Url.Action("Index", "Categories")">
                             Categories
                         </a>
-                        <hr class="navbar-divider">
-                        <div class="navbar-item">
-                            <div>
-                                <p class="has-text-info is-size-6-desktop"><strong>Orders</strong></p>
-
-                                <small>
-                                    <a class="view-all-versions" href="/versions">Last Ordered</a>
-                                </small>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link " href="http://bulma.io/blog/">
+                    <a class="navbar-link " href="@Url.Action("Index", "Shop")">
                         Shop
                     </a>
                     <div class="navbar-dropdown " data-style="width: 18rem;">
 
-                        <a class="navbar-item" href="/2017/07/24/access-previous-bulma-versions/">
+                        <a class="navbar-item" href="@Url.Action("Index", "Shop")">
                             Products
-                        </a>
-
-                        <a class="navbar-item" href="/2017/03/10/new-field-element/">
-                            Categories
-                        </a>                       
+                        </a>                      
                     </div>
                 </div>       
             </div>
 
             <div class="navbar-end">
-                <a class="navbar-item" href="https://github.com/jgthms/bulma" target="_blank">
+                <a class="navbar-item badge" data-badge="{{itemsCount}}" href="@Url.Action("Cart", "Shop")">
                     <span class="icon">
                         <i class="fa fa-shopping-cart"></i>
                     </span>

@@ -2,3 +2,102 @@
 .navbar-item img {
     max-height: 3rem;
 }
+
+@keyframes spinAround {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.badge {
+    position: relative;
+    white-space: nowrap;
+}
+
+    .badge.badge-white[data-badge]::after, .badge.badge-white:not([data-badge])::after {
+        background: white;
+        color: #0a0a0a;
+    }
+
+    .badge.badge-black[data-badge]::after, .badge.badge-black:not([data-badge])::after {
+        background: #0a0a0a;
+        color: white;
+    }
+
+    .badge.badge-light[data-badge]::after, .badge.badge-light:not([data-badge])::after {
+        background: whitesmoke;
+        color: #363636;
+    }
+
+    .badge.badge-dark[data-badge]::after, .badge.badge-dark:not([data-badge])::after {
+        background: #363636;
+        color: whitesmoke;
+    }
+
+    .badge.badge-primary[data-badge]::after, .badge.badge-primary:not([data-badge])::after {
+        background: #00d1b2;
+        color: #fff;
+    }
+
+    .badge.badge-info[data-badge]::after, .badge.badge-info:not([data-badge])::after {
+        background: #3273dc;
+        color: #fff;
+    }
+
+    .badge.badge-success[data-badge]::after, .badge.badge-success:not([data-badge])::after {
+        background: #23d160;
+        color: #fff;
+    }
+
+    .badge.badge-warning[data-badge]::after, .badge.badge-warning:not([data-badge])::after {
+        background: #ffdd57;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .badge.badge-danger[data-badge]::after, .badge.badge-danger:not([data-badge])::after {
+        background: #ff3860;
+        color: #fff;
+    }
+
+    .badge[data-badge]::after, .badge:not([data-badge])::after {
+        background: #00d1b2;
+        background-clip: padding-box;
+        border-radius: 1rem;
+        box-shadow: 0 0 0 0.2rem #fff;
+        color: #fff;
+        content: attr(data-badge);
+        display: inline-block;
+        -webkit-transform: translate(-0.2rem, -1rem);
+        -ms-transform: translate(-0.2rem, -1rem);
+        transform: translate(-0.2rem, -1rem);
+    }
+
+    .badge[data-badge]::after {
+        font-size: 0.75rem;
+        height: 1.8rem;
+        line-height: 1;
+        min-width: 1.8rem;
+        padding: 0.3rem 0.5rem;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .badge:not([data-badge])::after, .badge[data-badge=""]::after {
+        height: 0.6rem;
+        min-width: 0.6rem;
+        padding: 0;
+        width: 0.6rem;
+    }
+
+    .badge.button::after {
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transform: translate(50%, -50%);
+        -ms-transform: translate(50%, -50%);
+        transform: translate(50%, -50%);
+    }
