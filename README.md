@@ -37,9 +37,16 @@ PointOfSale/
 
 # Build and Execution instructions
 
+## Build
+First you will have to build the project in order to download all needed libraries from Nuget
+
 ## Database
 > All database structure and mappings can be found in "PointOfSale.Infrastructure.Repository" project.
 
 mssqllocaldb was used as the application default database. The context name used was PointOfSaleContext
 
 You have to use the **Package Manager Console** and run the command `Update-Database` with default project set to "PointOfSale.Infrastructure.Repository" in order to apply the migrations and create the database.
+
+## Running
+
+In order to run the project, first you will have to set the "PointOfSale.Mvc" as the StartUp project
