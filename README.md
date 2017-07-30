@@ -1,7 +1,7 @@
 # Test for .NET Backend Web Development
 
 ## Platforms
-The project was developed in Visual Studio 2017
+The project was developed in Visual Studio 2017 Community Edition
 
 ## Technologies
 - ASP.NET MVC 5
@@ -49,4 +49,4 @@ SQL Server Express was used as the application default database. Connection sett
 ...  
 ```
 
-After that you have to use the **Package Manager Console** and run the command `Update-Database` to apply the migrations and create the database.
+After that you have to use the **Package Manager Console** and run the command `Update-Database` with default project set to "PointOfSale.Infrastructure.Repository" in order to apply the migrations and create the database.
